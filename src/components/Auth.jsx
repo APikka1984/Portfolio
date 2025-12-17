@@ -1,42 +1,29 @@
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
-
-const ADMIN_EMAIL = "ak3979170@gmail.com";
+import { auth, googleProvider } from "../firebase";
+import { signInWithPopup } from "firebase/auth";
+import { useNavigate, Navigate } from "react-router-dom";
 
 export default function Auth() {
   const navigate = useNavigate();
+  const user = auth.currentUser;
 
-  const handleGoogleLogin = async () => {
-    try {
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
+  if (user) {
+    return <Navigate to="/dashboard" />;
+  }
 
-      if (result.user.email === ADMIN_EMAIL) {
-        localStorage.setItem("isAdmin", "true"); // 🔐 persist
-        navigate("/dashboard");
-      } else {
-        alert("Access denied");
-        await auth.signOut();
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Login cancelled");
-    }
+  const login = async () => {
+    await signInWithPopup(auth, googleProvider);
+    navigate("/dashboard");
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-xl shadow-md w-80 text-center">
-        <h2 className="text-2xl font-bold mb-6">Admin Login</h2>
-
-        <button
-          onClick={handleGoogleLogin}
-          className="w-full bg-red-600 text-white py-3 rounded hover:bg-red-700"
-        >
-          Sign in with Google
-        </button>
-      </div>
+    <div className="min-h-screen flex flex-col items-center justify-center">
+      <h1 className="text-2xl font-bold mb-4">Admin Login</h1>
+      <button
+        onClick={login}
+        className="bg-black text-white px-6 py-3 rounded"
+      >
+        Sign in with Google
+      </button>
     </div>
   );
 }

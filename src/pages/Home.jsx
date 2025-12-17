@@ -13,7 +13,7 @@ export default function Home() {
           Full Stack Developer | React | Firebase | Node.js
         </p>
 
-        <div className="mt-8 flex gap-4">
+        <div className="mt-8 flex gap-4 flex-wrap justify-center">
           <Link
             to="/contact"
             className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800"
@@ -22,11 +22,20 @@ export default function Home() {
           </Link>
 
           <a
-            href="https://github.com/"
+            href="https://github.com/APikka1984"
             target="_blank"
+            rel="noopener noreferrer"
             className="border border-black px-6 py-3 rounded hover:bg-gray-100"
           >
             GitHub
+          </a>
+
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            className="border border-black px-6 py-3 rounded hover:bg-gray-100"
+          >
+            Resume
           </a>
         </div>
       </section>
@@ -37,12 +46,11 @@ export default function Home() {
         <p className="text-gray-700 leading-relaxed">
           I’m an electronics engineer turned full-stack developer with hands-on
           experience building real-world applications using React, Firebase,
-          Node.js, and modern web tools. I enjoy learning new technologies and
-          solving real problems through clean code.
+          Node.js, and modern web tools.
         </p>
       </section>
 
-      {/* PROJECTS PREVIEW */}
+      {/* PROJECTS */}
       <section className="bg-gray-100 py-16">
         <div className="max-w-5xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-8">Projects</h2>

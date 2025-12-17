@@ -1,7 +1,6 @@
-import { useEffect } from "react";
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-export default function useTitle(title) {
-  useEffect(() => {
-    document.title = title;
-  }, [title]);
-}
+export default defineConfig({
+  plugins: [react()],
+});

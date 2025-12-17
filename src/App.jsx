@@ -8,10 +8,12 @@ import ProtectedRoute from "./components/ProtectedRoute";
 export default function App() {
   return (
     <Routes>
+      {/* Public */}
       <Route path="/" element={<Home />} />
       <Route path="/contact" element={<ContactPage />} />
-      <Route path="/admin" element={<Auth />} />
 
+      {/* Admin */}
+      <Route path="/admin" element={<Auth />} />
       <Route
         path="/dashboard"
         element={
